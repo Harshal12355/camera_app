@@ -29,13 +29,15 @@ class _LandingScreenState extends State<LandingScreen> {
 
   File imageFile;
 
-  _openGallery () async{
+  _openGallery (BuildContext context) async{
+      // ignore: deprecated_member_use
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       this.setState(() {
       });
   }
 
-  _openCamera () async {
+  _openCamera (BuildContext context ) async {
+      // ignore: deprecated_member_use
       imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
       this.setState(() {
       });
@@ -51,14 +53,14 @@ class _LandingScreenState extends State<LandingScreen> {
                 GestureDetector(
                   child: Text("Open Gallery"),
                   onTap: () {
-                    _openGallery();
+                    _openGallery(context);
                   },
                 ),
                 Padding(padding: EdgeInsets.all(8.0)),
                 GestureDetector(
                   child: Text("Open Camera"),
                   onTap: () {
-                    _openCamera();
+                    _openCamera(context);
                   },
                 ),
               ],
