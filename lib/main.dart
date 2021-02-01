@@ -34,6 +34,7 @@ class _LandingScreenState extends State<LandingScreen> {
       imageFile = await ImagePicker.pickImage(source: ImageSource.gallery);
       this.setState(() {
       });
+      Navigator.of(context).pop();
   }
 
   _openCamera (BuildContext context ) async {
@@ -41,6 +42,7 @@ class _LandingScreenState extends State<LandingScreen> {
       imageFile = await ImagePicker.pickImage(source: ImageSource.camera);
       this.setState(() {
       });
+      Navigator.of(context).pop();
   }
 
   Future<void> _showChoiceDialogue(BuildContext context){
@@ -70,6 +72,15 @@ class _LandingScreenState extends State<LandingScreen> {
     });
   }
 
+  Widget _selector() {
+    if (imageFile == null){
+      return Text("No Image Selected");
+    } else {
+      return Image.file(imageFile, width: 400, height: 400);
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +92,7 @@ class _LandingScreenState extends State<LandingScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
-            Text("No Image Selected"),
+            _selector(),
             RaisedButton(
                 onPressed: () {
                   _showChoiceDialogue(context);
